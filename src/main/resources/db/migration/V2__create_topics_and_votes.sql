@@ -1,0 +1,15 @@
+CREATE TABLE IF NOT EXISTS topics (
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    description VARCHAR(255) NOT NULL,
+    author VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS votes (
+       id SERIAL PRIMARY KEY,
+       user_id INT REFERENCES users(id),
+       topic_id INT REFERENCES topics(id),
+       liked BOOLEAN NOT NULL,
+       voteDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
